@@ -1,4 +1,4 @@
-RSA Crack
+##### RSA Crack
 
 This is a C++ class to crack small RSA-style private keys by finding prime factors (p,q) for n = p * q
 
