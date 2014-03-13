@@ -1,0 +1,4 @@
+*.o
+TestMain
+.DS_Store
+Notes.txt
