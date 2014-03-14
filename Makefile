@@ -1,5 +1,5 @@
 CC = g++-4.9
-FLAGS = -Wall -g -03 
+FLAGS = -Wall -g -O3 
 LIBS = -lpthread
 
 EXPENDABLES = PrimeFactors TestMain.o TestMain
