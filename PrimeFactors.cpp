@@ -21,8 +21,7 @@ namespace brute {
     }
 
     bool
-    brute_force( uint256 &n ){
-
+    PrimeFactors::brute_force( uint256 &n ){
         return true;
     }
 }
