@@ -1,20 +1,20 @@
 CC = g++-4.9
-FLAGS = -Wall -g -O3 
-LIBS = -lpthread
+FLAGS = -std=c++11 -Wall -g -O3
 
-EXPENDABLES = PrimeFactors TestMain.o TestMain
+EXPENDABLES = PrimeFactors.o TestMain.o TestMain
 
-all: PrimeFactors.o TestMain.o TestMain
+all:
+	@make $(EXPENDABLES)
 
 
-TestMain: PrimeFactors TestMain.o
-	$(CC) $(FLAGS) PrimeFactors TestMain.o -lm -o TestMain
+TestMain: TestMain.o PrimeFactors.o
+	$(CC) $(FLAGS) PrimeFactors.o TestMain.o -lm -o TestMain
 
-PrimeFactors: PrimeFactors.h PrimeFactors.cpp
-	$(CC) $(FLAGS) -c PrimeFactors.cpp -o PrimeFactors $(LIBS)
+PrimeFactors.o: PrimeFactors.h PrimeFactors.cpp
+	$(CC) $(FLAGS) -c PrimeFactors.cpp -o PrimeFactors.o
 
 TestMain.o: PrimeFactors.h TestMain.cpp
-	$(CC) $(FLAGS) -c TestMain.cpp -o TestMain.o $(LIBS)
+	$(CC) $(FLAGS) -c TestMain.cpp -o TestMain.o
 
 
 clean:
