@@ -30,6 +30,9 @@ namespace brute {
             inline uint256 get_p() const { return q; }
             inline uint256 get_q() const { return q; }
 
+            inline bool set_p(uint256 factor) { p = factor; return 1; }
+            inline bool set_q(uint256 factor) { q = factor; return 1; }
+
 
             /* Operators */
             friend ostream& operator<<(ostream&, const PrimeFactors& prime_factors);
