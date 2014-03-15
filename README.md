@@ -1,15 +1,18 @@
-##### RSA Crack
+### RSA Crack
 
-This is a C++ class to crack small RSA-style private keys by finding prime factors (p,q) for n = p * q
+This is a C++ multithreaded C++ class to crack small RSA-style private keys by finding prime factors (p,q) for n = p * q
 
 1. Create a new PrimeFactors instance
     ```
-    PrimeFactors myPrimeFactors("Insert your passphrase here");
+    PrimeFactors myPrimeFactors(myHexValue);
     ```
 
-2. Obtain the details of the PrimeFactors
+2. List the Primefactors (Warning: this could be ahile. Get a coffee... or two... or ~infinity depending on your number!)
     ```
     myPrimeFactors.get_factors();
     ```
 
-### STILL IN DEVELOPMENT
+#### Notes
+
+1. Requires c++11 std lib
+2. Candle handle up to 256bit integer input
