@@ -19,8 +19,9 @@ namespace brute {
             ~PrimeFactors();
 
             /* Functions */
-            uint256* get_factors() const
+            uint256* get_factors()
             {
+                this->brute_force(n);
                 uint256 factors[3] = { get_n(), get_p(), get_q() };
                 return factors;
             }
@@ -40,7 +41,7 @@ namespace brute {
             uint256 q;
 
             /* Functions */
-            bool brute_force( unsigned int &num );
+            bool brute_force( uint256 num );
     };
 }
 #endif

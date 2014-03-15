@@ -21,7 +21,7 @@ namespace brute {
     }
 
     bool
-    brute_force( unsigned int &num ){
+    brute_force( uint256 &n ){
 
         return true;
     }

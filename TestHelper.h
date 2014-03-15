@@ -64,6 +64,8 @@ void brute_force_test()
     else
       cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
 
+    cout << obj_array[i].get_p().GetHex() << endl;
+    cout << obj_array[i].get_q().GetHex() << endl;
   }
 }
 
