@@ -1,5 +1,5 @@
 CC = g++-4.9
-FLAGS = -std=c++11 -Wall -g -O3
+CXXFLAGS = -std=c++11 -Wall -O3
 
 EXPENDABLES = PrimeFactors.o TestMain.o TestMain
 
@@ -8,13 +8,13 @@ all:
 
 
 TestMain: TestMain.o PrimeFactors.o
-	$(CC) $(FLAGS) PrimeFactors.o TestMain.o -lm -o TestMain
+	$(CC) $(CXXFLAGS) PrimeFactors.o TestMain.o -lm -o TestMain
 
 PrimeFactors.o: PrimeFactors.h PrimeFactors.cpp
-	$(CC) $(FLAGS) -c PrimeFactors.cpp -o PrimeFactors.o
+	$(CC) $(CXXFLAGS) -c PrimeFactors.cpp -o PrimeFactors.o
 
 TestMain.o: PrimeFactors.h TestMain.cpp
-	$(CC) $(FLAGS) -c TestMain.cpp -o TestMain.o
+	$(CC) $(CXXFLAGS) -c TestMain.cpp -o TestMain.o
 
 
 clean:
