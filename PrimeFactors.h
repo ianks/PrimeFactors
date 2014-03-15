@@ -41,7 +41,7 @@ namespace brute {
             uint256 q;
 
             /* Functions */
-            bool brute_force( uint256 num );
+            bool brute_force( uint256 &num );
     };
 }
 #endif
