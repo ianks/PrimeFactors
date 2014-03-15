@@ -12,7 +12,7 @@ using namespace std;
 
 namespace brute {
 
-    PrimeFactors::PrimeFactors( unsigned int num ){
+    PrimeFactors::PrimeFactors( uint256 num ){
         n = num;
     }
 
@@ -20,11 +20,10 @@ namespace brute {
 
     }
 
-    inline unsigned int*
+    bool
     brute_force( unsigned int &num ){
 
-        unsigned int factors[2];
-        return factors;
+        return true;
     }
 }
 

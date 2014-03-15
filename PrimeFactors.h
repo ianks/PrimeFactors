@@ -6,6 +6,8 @@
 #include <limits.h>
 #include <string>
 
+#include "uint256.h"
+
 using namespace std;
 
 namespace brute {
@@ -13,19 +15,19 @@ namespace brute {
     {
         public:
             /* Constructors, Destructors  */
-            PrimeFactors( unsigned int num );
+            PrimeFactors( uint256 num );
             ~PrimeFactors();
 
             /* Functions */
-            unsigned int*get_factors() const
+            uint256* get_factors() const
             {
-                unsigned int factors[3] = { get_n(), get_p(), get_q() };
+                uint256 factors[3] = { get_n(), get_p(), get_q() };
                 return factors;
             }
 
-            inline unsigned int  get_n() const { return n; }
-            inline unsigned int  get_p() const { return q; }
-            inline unsigned int  get_q() const { return q; }
+            inline uint256 get_n() const { return n; }
+            inline uint256 get_p() const { return q; }
+            inline uint256 get_q() const { return q; }
 
 
             /* Operators */
@@ -33,12 +35,12 @@ namespace brute {
 
         private:
             /* Variables  */
-            unsigned long long int n;
-            unsigned long long int p;
-            unsigned long long int q;
+            uint256 n;
+            uint256 p;
+            uint256 q;
 
             /* Functions */
-            inline unsigned int* brute_force( unsigned int &num );
+            bool brute_force( unsigned int &num );
     };
 }
 #endif
