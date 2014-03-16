@@ -1,18 +1,20 @@
 #ifndef BRUTE_PRIMEFACTORS_CPP
 #define BRUTE_PRIMEFACTORS_CPP
 
-#include <math.h>
-#include <iostream>
-#include <thread>
-
-#include "uint256.h"
 #include "PrimeFactors.h"
 
+#include <boost/multiprecision/cpp_int.hpp>
+#include <iostream>
+#include <math.h>
+#include <thread>
+
+using namespace boost::multiprecision;
+using namespace boost::multiprecision::literals;
 using namespace std;
 
 namespace brute {
 
-    PrimeFactors::PrimeFactors( uint256 num ){
+    PrimeFactors::PrimeFactors( uint1024_t num ){
         n = num;
     }
 
@@ -21,7 +23,7 @@ namespace brute {
     }
 
     bool
-    brute_force( unsigned int &num ){
+    brute_force( uint1024_t &num ){
 
         return true;
     }
