@@ -1,46 +1,46 @@
 #ifndef BRUTE_PRIMEFACTORS_H
 #define BRUTE_PRIMEFACTORS_H
 
+#include <boost/multiprecision/cpp_int.hpp>
 #include <cstdlib>
 #include <iostream>
-#include <limits.h>
 #include <string>
 
-#include "uint256.h"
-
+using namespace boost::multiprecision;
+using namespace boost::multiprecision::literals;
 using namespace std;
+
 
 namespace brute {
     class PrimeFactors
     {
         public:
             /* Constructors, Destructors  */
-            PrimeFactors( uint256 num );
+            PrimeFactors( uint1024_t num );
             ~PrimeFactors();
 
             /* Functions */
-            uint256* get_factors() const
+            uint1024_t* get_factors() const
             {
-                uint256 factors[3] = { get_n(), get_p(), get_q() };
+                uint1024_t factors[3] = { get_n(), get_p(), get_q() };
                 return factors;
             }
 
-            inline uint256 get_n() const { return n; }
-            inline uint256 get_p() const { return q; }
-            inline uint256 get_q() const { return q; }
-
+            inline uint1024_t get_n() const { return n; }
+            inline uint1024_t get_p() const { return q; }
+            inline uint1024_t get_q() const { return q; }
 
             /* Operators */
             friend ostream& operator<<(ostream&, const PrimeFactors& prime_factors);
 
         private:
             /* Variables  */
-            uint256 n;
-            uint256 p;
-            uint256 q;
+            uint1024_t n;
+            uint1024_t p;
+            uint1024_t q;
 
             /* Functions */
-            bool brute_force( unsigned int &num );
+            bool brute_force( checked_uint1024_t &num );
     };
 }
 #endif
