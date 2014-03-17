@@ -1,4 +1,4 @@
-CC = g++-4.9
+CC = g++-4.8
 CXXFLAGS = -std=c++11 -fext-numeric-literals -Wall -O3
 EXPENDABLES = PrimeFactors.o TestMain.o TestMain
 

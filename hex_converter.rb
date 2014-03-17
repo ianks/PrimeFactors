@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 puts "Enter your integer."
 num = gets.chomp
 print "You hexvalue is: 0x"
