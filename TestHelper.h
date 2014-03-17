@@ -38,49 +38,49 @@ PrimeFactors obj_array[TESTS] = { test1, test2, test3, test4, test5 };
 
 void constructor_test()
 {
-  cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
+  // cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
 
-  uint1024_t test_array[TESTS] = { a, b, c, d, e };
+  // uint1024_t test_array[TESTS] = { a, b, c, d, e };
 
-  for ( unsigned char i = 0; i < TESTS; i++ ){
+  // for ( unsigned char i = 0; i < TESTS; i++ ){
 
-    bool correct = ( obj_array[i].n == test_array[i] );
+  //   bool correct = ( obj_array[i].n == test_array[i] );
 
-    if ( correct )
-      cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
+  //   if ( correct )
+  //     cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
 
-    else
-      cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
+  //   else
+  //     cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
 
-    cout << "n = " << obj_array[i].n << endl;
-  }
+  //   cout << "n = " << obj_array[i].n << endl;
+  // }
 
-  cout << endl;
-  return;
+  // cout << endl;
+  // return;
 }
 
 void brute_force_test()
 {
-  cout << CYAN << "\n------- BRUTE FORCE-------\n" << endl;
+  // cout << CYAN << "\n------- BRUTE FORCE-------\n" << endl;
 
-  /* Correct p and q  Factors */
-  uint1024_t p[TESTS] = { 3, 43,  91, 131, 0x4203ad42604965e93_cppui1024 };
-  uint1024_t q[TESTS] = { 7, 57, 101,  37, 0x52e8bfd1e39254e43_cppui1024 };
+  // /* Correct p and q  Factors */
+  // uint1024_t p[TESTS] = { 3, 43,  91, 131, 0x4203ad42604965e93_cppui1024 };
+  // uint1024_t q[TESTS] = { 7, 57, 101,  37, 0x52e8bfd1e39254e43_cppui1024 };
 
-  for ( unsigned char i = 0; i < TESTS; i++ ){
+  // for ( unsigned char i = 0; i < TESTS; i++ ){
 
-    obj_array[i].brute_force();
-    // check if p and q are correct
-    // exclusive-or to make sure each var is only checked once
-    bool p_correct = ( (obj_array[i].p == p[i]) != (obj_array[i].p == q[i]) );
-    bool q_correct = ( (obj_array[i].q == p[i]) != (obj_array[i].q == q[i]) );
+  //   obj_array[i].brute_force();
+  //   // check if p and q are correct
+  //   // exclusive-or to make sure each var is only checked once
+  //   bool p_correct = ( (obj_array[i].p == p[i]) != (obj_array[i].p == q[i]) );
+  //   bool q_correct = ( (obj_array[i].q == p[i]) != (obj_array[i].q == q[i]) );
 
-    if ( p_correct && q_correct )
-      cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
+  //   if ( p_correct && q_correct )
+  //     cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
 
-    else
-      cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
-  }
+  //   else
+  //     cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
+  // }
 }
 
 void sketch_pad()
