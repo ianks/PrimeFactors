@@ -52,7 +52,7 @@ namespace brute {
       void set_q( uint1024_t number);
 
       /* Functions  */
-      uint1024_t find_one_factor( uint1024_t &num) const;
+      uint1024_t find_one_factor( uint1024_t num) const;
 
   };
 }

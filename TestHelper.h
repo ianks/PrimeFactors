@@ -38,25 +38,25 @@ PrimeFactors obj_array[TESTS] = { test1, test2, test3, test4, test5 };
 
 void constructor_test()
 {
-  // cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
+  cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
 
-  // uint1024_t test_array[TESTS] = { a, b, c, d, e };
+  uint1024_t test_array[TESTS] = { a, b, c, d, e };
 
-  // for ( unsigned char i = 0; i < TESTS; i++ ){
+  for ( unsigned char i = 0; i < TESTS; i++ ){
 
-  //   bool correct = ( obj_array[i].n == test_array[i] );
+    bool correct = ( obj_array[i].n == test_array[i] );
 
-  //   if ( correct )
-  //     cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
+    if ( correct )
+      cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
 
-  //   else
-  //     cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
+    else
+      cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
 
-  //   cout << "n = " << obj_array[i].n << endl;
-  // }
+    cout << "n = " << obj_array[i].n << endl;
+  }
 
-  // cout << endl;
-  // return;
+  cout << endl;
+  return;
 }
 
 void brute_force_test()
