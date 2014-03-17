@@ -1,6 +1,5 @@
 CC = g++-4.9
-CXXFLAGS = -std=c++11 -fext-numeric-literals -Wall -O3
-
+CXXFLAGS = -std=c++11 -fext-numeric-literals -fno-omit-frame-pointer -Wall -g
 EXPENDABLES = PrimeFactors.o TestMain.o TestMain
 
 all:

@@ -18,19 +18,20 @@ using namespace brute;
 #define CYAN    "\033[0;36m"
 #define TESTS 5
 
-/* Test Objects */
-PrimeFactors test1(21);
-PrimeFactors test2(2451);
-PrimeFactors test3(9191);
-PrimeFactors test4(5509);
-PrimeFactors test5(0x1561324b24f2bccf2365749c5d6a6a8a79_cppui1024);
-
 /* Test Integers */
 uint1024_t a = 21;
 uint1024_t b = 2451;
 uint1024_t c = 9191;
 uint1024_t d = 5509;
 uint1024_t e = 0x1561324b24f2bccf2365749c5d6a6a8a79_cppui1024;
+
+/* Test Objects */
+PrimeFactors test1(a);
+PrimeFactors test2(b);
+PrimeFactors test3(c);
+PrimeFactors test4(d);
+PrimeFactors test5(e);
+
 
 /* Array of Testing Objects */
 PrimeFactors obj_array[TESTS] = { test1, test2, test3, test4, test5 };
@@ -43,7 +44,7 @@ void constructor_test()
 
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
-    bool correct = ( obj_array[i].get_n() == test_array[i] );
+    bool correct = ( obj_array[i].n == test_array[i] );
 
     if ( correct )
       cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
@@ -51,7 +52,7 @@ void constructor_test()
     else
       cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
 
-    cout << "n = " << obj_array[i].get_n() << endl;
+    cout << "n = " << obj_array[i].n << endl;
   }
 
   cout << endl;
@@ -68,10 +69,11 @@ void brute_force_test()
 
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
+    obj_array[i].brute_force();
     // check if p and q are correct
     // exclusive-or to make sure each var is only checked once
-    bool p_correct = ( (obj_array[i].get_p() == p[i]) != (obj_array[i].get_p() == q[i]) );
-    bool q_correct = ( (obj_array[i].get_q() == p[i]) != (obj_array[i].get_q() == q[i]) );
+    bool p_correct = ( (obj_array[i].p == p[i]) != (obj_array[i].p == q[i]) );
+    bool q_correct = ( (obj_array[i].q == p[i]) != (obj_array[i].q == q[i]) );
 
     if ( p_correct && q_correct )
       cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
@@ -84,5 +86,6 @@ void brute_force_test()
 void sketch_pad()
 {
   cout << CYAN << "\n-------SKETCH PAD-------\n" << endl;
+  test5.brute_force();
   return;
 }

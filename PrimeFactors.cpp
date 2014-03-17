@@ -14,19 +14,34 @@ using namespace std;
 
 namespace brute {
 
-    PrimeFactors::PrimeFactors( uint1024_t num ){
-        n = num;
+  PrimeFactors::PrimeFactors( uint1024_t num ){
+    n = num;
+    p = 0;
+    q = 0;
+    sqrt_n = sqrt(n);
+  }
+
+  PrimeFactors::~PrimeFactors(){
+
+  }
+
+  uint1024_t PrimeFactors::find_one_factor( uint1024_t &key) const{
+    for (uint1024_t i = 2; i < sqrt_n; i++){
+      if (key % i == 0)
+        if (i != p && i != q)
+          return i;
     }
+  }
 
-    PrimeFactors::~PrimeFactors(){
+  bool PrimeFactors::brute_force(){
 
-    }
+    uint1024_t key = n;
 
-    bool
-    brute_force( uint1024_t &num ){
+    p = find_one_factor(key);
+    q = find_one_factor(key);
 
-        return true;
-    }
+    return true;
+  }
 }
 
 #endif
