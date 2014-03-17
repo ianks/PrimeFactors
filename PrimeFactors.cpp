@@ -25,22 +25,18 @@ namespace brute {
 
   }
 
-  uint1024_t PrimeFactors::find_one_factor( uint1024_t key) const{
-    for (uint1024_t i = 2; i < sqrt_n; i++){
-      cout << sqrt_n << endl;
-      if (key % i == 0)
-        if (i != p && i != q)
+  uint1024_t PrimeFactors::find_one_factor( uint1024_t &key) const{
+
+    for (uint1024_t i = 1; i < n; i = i+2){
+      if (key % i == 0 && i != 1)
           return i;
     }
+    return 0;
   }
 
   bool PrimeFactors::brute_force(){
-
-    uint1024_t key = n;
-
-    p = find_one_factor(key);
-    q = find_one_factor(key);
-
+    p = find_one_factor(n);
+    q = n / p;
     return true;
   }
 }

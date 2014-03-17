@@ -16,31 +16,50 @@ using namespace brute;
 #define PASS    "\033[0;32m"
 #define FAIL    "\033[0;31m"
 #define CYAN    "\033[0;36m"
-#define TESTS 5
+#define TESTS 12
 
 /* Test Integers */
-uint1024_t a = 21;
-uint1024_t b = 2451;
-uint1024_t c = 9191;
-uint1024_t d = 5509;
-uint1024_t e = 0x1561324b24f2bccf2365749c5d6a6a8a79_cppui1024;
+uint1024_t a = 2605796209;
+uint1024_t b = 62912768353;
+uint1024_t c = 3747841897609;
+uint1024_t d = 780421461718057;
+uint1024_t e = 3067939880886169;
+uint1024_t f = 12749250057165277;
+uint1024_t g = 212581611619084489;
+uint1024_t h = 2898019909403018077;
+uint1024_t i = 0x98F0CB99D6F5332D_cppui1024;                     //20
+uint1024_t j = 0xB756E20EE44F043C9BD_cppui1024;                  //23
+uint1024_t k = 0xA2A22393F60EB114438792D_cppui1024;              //28
+uint1024_t l = 0xC21BD30B38F1B636F2240E44E114D9_cppui1024;       //37
 
 /* Test Objects */
-PrimeFactors test1(a);
-PrimeFactors test2(b);
-PrimeFactors test3(c);
-PrimeFactors test4(d);
-PrimeFactors test5(e);
+PrimeFactors test01(a);
+PrimeFactors test02(b);
+PrimeFactors test03(c);
+PrimeFactors test04(d);
+PrimeFactors test05(e);
+PrimeFactors test06(f);
+PrimeFactors test07(g);
+PrimeFactors test08(h);
+PrimeFactors test09(i);
+PrimeFactors test10(j);
+PrimeFactors test11(k);
+PrimeFactors test12(l);
 
 
 /* Array of Testing Objects */
-PrimeFactors obj_array[TESTS] = { test1, test2, test3, test4, test5 };
+PrimeFactors obj_array[TESTS] = { test01, test02, test03,
+                                  test04, test05, test06,
+                                  test07, test08, test09,
+                                  test10, test11, test12 };
 
 void constructor_test()
 {
   cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
 
-  uint1024_t test_array[TESTS] = { a, b, c, d, e };
+  uint1024_t test_array[TESTS] = { a, b, c, d,
+                                   e, f, g, h,
+                                   i, j, k, l };
 
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
@@ -61,31 +80,38 @@ void constructor_test()
 
 void brute_force_test()
 {
-  // cout << CYAN << "\n------- BRUTE FORCE-------\n" << endl;
+  cout << CYAN << "\n------- BRUTE FORCE-------\n" << endl;
 
-  // /* Correct p and q  Factors */
-  // uint1024_t p[TESTS] = { 3, 43,  91, 131, 0x4203ad42604965e93_cppui1024 };
-  // uint1024_t q[TESTS] = { 7, 57, 101,  37, 0x52e8bfd1e39254e43_cppui1024 };
+  /* Correct p and q  Factors */
+  uint1024_t p[TESTS] = {
+    51047, 60779, 60647,13500419, 55388987, 13500419, 926867, 14041283, 3296667839
+  };
 
-  // for ( unsigned char i = 0; i < TESTS; i++ ){
+  uint1024_t q[TESTS] = {
+    51047, 1035107, 61797647, 57807203, 55388987, 944359583, 229355033267, 206392813919, 3342930707
+  };
 
-  //   obj_array[i].brute_force();
-  //   // check if p and q are correct
-  //   // exclusive-or to make sure each var is only checked once
-  //   bool p_correct = ( (obj_array[i].p == p[i]) != (obj_array[i].p == q[i]) );
-  //   bool q_correct = ( (obj_array[i].q == p[i]) != (obj_array[i].q == q[i]) );
+  for ( unsigned char i = 0; i < TESTS; i++ ){
 
-  //   if ( p_correct && q_correct )
-  //     cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
+    obj_array[i].brute_force();
+    // check if p and q are correct
+    // exclusive-or to make sure each var is only checked once
+    bool p_correct = (obj_array[i].p == p[i]);
+    bool q_correct = (obj_array[i].q == q[i]);
 
-  //   else
-  //     cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
-  // }
+    if ( p_correct && q_correct )
+      cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
+
+    else
+      cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
+
+    cout << "p: " << obj_array[i].p <<endl;
+    cout << "q: " << obj_array[i].q <<endl;
+  }
 }
 
 void sketch_pad()
 {
   cout << CYAN << "\n-------SKETCH PAD-------\n" << endl;
-  test5.brute_force();
   return;
 }
