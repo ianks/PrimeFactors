@@ -38,8 +38,7 @@ namespace brute {
       uint1024_t get_q()      const { return q;       }
       uint1024_t get_sqrt_n() const { return sqrt_n ; }
 
-      bool brute_force();
-
+      void brute_force();
 
       /* Operators */
       friend ostream& operator<<(ostream&, const PrimeFactors& prime_factors);
@@ -51,8 +50,8 @@ namespace brute {
       void set_p( uint1024_t number);
       void set_q( uint1024_t number);
 
-      /* Functions  */
-      uint1024_t find_one_factor( uint1024_t &key) const;
+      uint1024_t find_one_factor(uint1024_t &start) const;
+
 
   };
 }

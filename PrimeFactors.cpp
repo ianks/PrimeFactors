@@ -7,6 +7,7 @@
 #include <iostream>
 #include <math.h>
 #include <thread>
+#include <future>
 
 using namespace boost::multiprecision;
 using namespace boost::multiprecision::literals;
@@ -25,20 +26,39 @@ namespace brute {
 
   }
 
-  uint1024_t PrimeFactors::find_one_factor( uint1024_t &key) const{
+  uint1024_t PrimeFactors::find_one_factor(uint1024_t &start) const{
 
-    for (uint1024_t i = 1; i < n; i = i+2){
-      if (key % i == 0 && i != 1)
+    for (uint1024_t i = start; i < n; i = i+2){
+      if (n % i == 0 && i != 1)
           return i;
-    }
+      }
     return 0;
   }
 
-  bool PrimeFactors::brute_force(){
-    p = find_one_factor(n);
-    q = n / p;
-    return true;
+  void PrimeFactors::brute_force(){
+    uint1024_t start;
+
+    unsigned char num_threads = thread::hardware_concurrency();
+    future<uint1024_t> future_array[num_threads];
+
+    for (unsigned char i = 0; i < num_threads; i++){
+      start = 1;
+      // bind captures the instances find_one_factor() pointer
+      // must pass uint1024_t by reference
+      auto func = bind(&PrimeFactors::find_one_factor, this, ref(start));
+      future_array[i] = async(func);
+    }
+
+    try{
+      p = future_array[0].get();
+      q = n / p;
+    }
+
+    catch(exception & e){
+      cout << e.what() << endl;
+    }
+
+    return;
   }
 }
-
 #endif
