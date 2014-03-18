@@ -4,10 +4,11 @@
 #include "PrimeFactors.h"
 
 #include <boost/multiprecision/cpp_int.hpp>
+#include <future>
 #include <iostream>
 #include <math.h>
+#include <mutex>
 #include <thread>
-#include <future>
 
 using namespace boost::multiprecision;
 using namespace boost::multiprecision::literals;
@@ -26,37 +27,45 @@ namespace brute {
 
   }
 
-  uint1024_t PrimeFactors::find_one_factor(uint1024_t &start) const{
+  void PrimeFactors::find_one_factor(uint1024_t &start) {
+    cout<< "Thread ID: " << this_thread::get_id() << endl;
+    cout<< "Start Value: " << this_thread::get_id() << endl;
 
-    for (uint1024_t i = start; i < n; i = i+2){
-      if (n % i == 0 && i != 1)
-          return i;
+    if ( n % 3 == 0)
+      p = 3;
+
+    for (uint1024_t i = start; i < n; i = i + 2){
+      if (p != NULL)
+        return;
+
+      if ( n % i == 0 ){
+        if ( p == 0 )
+            p = i;
+        return;
       }
-    return 0;
+    }
   }
 
   void PrimeFactors::brute_force(){
-    uint1024_t start;
 
-    unsigned char num_threads = thread::hardware_concurrency();
-    future<uint1024_t> future_array[num_threads];
+    uint1024_t start1 = 3;
+    uint1024_t start2 = (sqrt_n / 4) | 0x1;
+    uint1024_t start3 = (sqrt_n / 2) | 0x1;
+    uint1024_t start4 = (start2 + start3) | 0x1;
 
-    for (unsigned char i = 0; i < num_threads; i++){
-      start = 1;
-      // bind captures the instances find_one_factor() pointer
-      // must pass uint1024_t by reference
-      auto func = bind(&PrimeFactors::find_one_factor, this, ref(start));
-      future_array[i] = async(func);
-    }
+    auto func1 = bind(&PrimeFactors::find_one_factor, this, ref(start1));
+    auto func2 = bind(&PrimeFactors::find_one_factor, this, ref(start2));
+    auto func3 = bind(&PrimeFactors::find_one_factor, this, ref(start3));
+    auto func4 = bind(&PrimeFactors::find_one_factor, this, ref(start4));
 
-    try{
-      p = future_array[0].get();
-      q = n / p;
-    }
+    thread th1(func1), th2(func2), th3(func3), th4(func4);
+    th1.join();
+    th2.join();
+    th3.join();
+    th4.join();
 
-    catch(exception & e){
-      cout << e.what() << endl;
-    }
+
+    q = (n / p);
 
     return;
   }

@@ -3,8 +3,10 @@
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <cstdlib>
+#include <mutex>
 #include <iostream>
 #include <string>
+#include <future>
 
 using namespace boost::multiprecision;
 using namespace boost::multiprecision::literals;
@@ -39,19 +41,16 @@ namespace brute {
       uint1024_t get_sqrt_n() const { return sqrt_n ; }
 
       void brute_force();
+      void find_one_factor( uint1024_t &start );
 
       /* Operators */
       friend ostream& operator<<(ostream&, const PrimeFactors& prime_factors);
 
     private:
 
-
       /* Setters */
       void set_p( uint1024_t number);
       void set_q( uint1024_t number);
-
-      uint1024_t find_one_factor(uint1024_t &start) const;
-
 
   };
 }

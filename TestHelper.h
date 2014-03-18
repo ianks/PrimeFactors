@@ -113,5 +113,6 @@ void brute_force_test()
 void sketch_pad()
 {
   cout << CYAN << "\n-------SKETCH PAD-------\n" << endl;
+  test12.brute_force();
   return;
 }
