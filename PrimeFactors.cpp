@@ -23,30 +23,25 @@ namespace brute {
     sqrt_n = sqrt(n);
   }
 
-  PrimeFactors::~PrimeFactors(){
-
-  }
-
   void PrimeFactors::find_one_factor(uint1024_t &start) {
-    cout<< "Thread ID: " << this_thread::get_id() << endl;
-    cout<< "Start Value: " << this_thread::get_id() << endl;
-
-    if ( n % 3 == 0)
-      p = 3;
+    // cout<< "Thread ID: " << this_thread::get_id() << endl;
+    // cout<< "Start Value: " << this_thread::get_id() << endl;
 
     for (uint1024_t i = start; i < n; i = i + 2){
+      // if p has a value, threads exit function
       if (p != NULL)
         return;
 
       if ( n % i == 0 ){
-        if ( p == 0 )
-            p = i;
+        p = i;
         return;
       }
     }
   }
 
   void PrimeFactors::brute_force(){
+
+    // need to DRY out this function
 
     uint1024_t start1 = 3;
     uint1024_t start2 = (sqrt_n / 4) | 0x1;
@@ -63,7 +58,6 @@ namespace brute {
     th2.join();
     th3.join();
     th4.join();
-
 
     q = (n / p);
 

@@ -16,7 +16,7 @@ using namespace brute;
 #define PASS    "\033[0;32m"
 #define FAIL    "\033[0;31m"
 #define CYAN    "\033[0;36m"
-#define TESTS 12
+#define TESTS   12
 
 /* Test Integers */
 uint1024_t a = 2605796209;
@@ -113,6 +113,5 @@ void brute_force_test()
 void sketch_pad()
 {
   cout << CYAN << "\n-------SKETCH PAD-------\n" << endl;
-  test12.brute_force();
   return;
 }
