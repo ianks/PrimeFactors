@@ -24,34 +24,60 @@ namespace brute {
   }
 
   void PrimeFactors::find_one_factor(uint1024_t &start) {
-    // cout<< "Thread ID: " << this_thread::get_id() << endl;
-    // cout<< "Start Value: " << this_thread::get_id() << endl;
 
-    for (uint1024_t i = start; i < n; i = i + 2){
+    uint1024_t local = n;
+      
+    for (uint1024_t i = start; i < sqrt_n; i = i + 10){
       // if p has a value, threads exit function
-      if (p != NULL)
+  
+
+      if ( p != NULL )
         return;
 
-      if ( n % i == 0 ){
+      if ( local % i == 0 ){
         p = i;
         return;
       }
+      if ( local % (i+2) == 0 ){
+        p = i+2;
+        return;
+      }
+      if ( local % (i+4) == 0 ){
+        p = i+4;
+        return;
+      }
+      if ( local % (i+6) == 0 ){
+        p = i+6;
+        return;
+      }
+      if (local % (i+8) == 0 ){
+        p = i+8;
+        return;
+      }
     }
+    return;
   }
 
   void PrimeFactors::brute_force(){
 
     // need to DRY out this function
 
-    uint1024_t start1 = 3;
-    uint1024_t start2 = (sqrt_n / 4) | 0x1;
-    uint1024_t start3 = (sqrt_n / 2) | 0x1;
-    uint1024_t start4 = (start2 + start3) | 0x1;
+    uint1024_t start_arr[4];
+    start_arr[0] = 3;
+    start_arr[1] = (sqrt_n / 4) | 0x1;
+    start_arr[2] = (sqrt_n / 2) | 0x1;
+    start_arr[3] = (start_arr[1] + start_arr[2]) | 0x1;
 
-    auto func1 = bind(&PrimeFactors::find_one_factor, this, ref(start1));
-    auto func2 = bind(&PrimeFactors::find_one_factor, this, ref(start2));
-    auto func3 = bind(&PrimeFactors::find_one_factor, this, ref(start3));
-    auto func4 = bind(&PrimeFactors::find_one_factor, this, ref(start4));
+    //for (int i = 0; i < 4; i++){
+    //  thread_arr[i] = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[i]));
+    //  thread 
+    //  thread_arr[i].join();
+    //}
+
+    auto func1 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[0]));
+    auto func2 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[1]));
+    auto func3 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[2]));
+    auto func4 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[3]));
 
     thread th1(func1), th2(func2), th3(func3), th4(func4);
     th1.join();
