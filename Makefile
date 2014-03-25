@@ -15,6 +15,8 @@ PrimeFactors.o: PrimeFactors.h PrimeFactors.cpp
 TestMain.o: PrimeFactors.h TestMain.cpp
 	$(CC) $(CXXFLAGS) -c TestMain.cpp -o TestMain.o
 
+test: TestMain
+	./TestMain
 
 clean:
 	rm $(EXPENDABLES)
