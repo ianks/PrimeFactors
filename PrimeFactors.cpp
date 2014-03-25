@@ -8,8 +8,6 @@
 #include <future>
 #include <iostream>
 #include <math.h>
-#include <mutex>
-#include <thread>
 
 using namespace boost::multiprecision;
 using namespace boost::multiprecision::literals;
@@ -26,6 +24,8 @@ namespace brute {
 
   void PrimeFactors::find_one_factor(uint1024_t &start) {
 
+    long long cycStart, cycStop;
+    cycStart = rdtscll();
     uint1024_t local = n;
 
     for (uint1024_t i = start; i < sqrt_n; i = i + 10){
@@ -37,26 +37,30 @@ namespace brute {
 
       if ( local % i == 0 ){
         p = i;
-        return;
+        goto finish;
       }
       if ( local % (i+2) == 0 ){
         p = i+2;
-        return;
+        goto finish;
       }
       if ( local % (i+4) == 0 ){
         p = i+4;
-        return;
+        goto finish;
       }
       if ( local % (i+6) == 0 ){
         p = i+6;
-        return;
+        goto finish;
       }
       if (local % (i+8) == 0 ){
         p = i+8;
-        return;
+        goto finish;
       }
     }
-    return;
+    finish:
+      cycStop = rdtscll();
+      float diff = cycStop - cycStart;
+      cout << "Cycles to Process: " << diff << endl;
+      return;
   }
 
   void PrimeFactors::brute_force(){
@@ -69,22 +73,7 @@ namespace brute {
     start_arr[2] = (sqrt_n / 2) | 0x1;
     start_arr[3] = (start_arr[1] + start_arr[2]) | 0x1;
 
-    //for (int i = 0; i < 4; i++){
-    //  thread_arr[i] = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[i]));
-    //  thread
-    //  thread_arr[i].join();
-    //}
-
-    auto func1 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[0]));
-    auto func2 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[1]));
-    auto func3 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[2]));
-    auto func4 = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[3]));
-
-    thread th1(func1), th2(func2), th3(func3), th4(func4);
-    th1.join();
-    th2.join();
-    th3.join();
-    th4.join();
+    find_one_factor(start_arr[0]);
 
     q = (n / p);
 
