@@ -2,6 +2,7 @@
 #define BRUTE_PRIMEFACTORS_CPP
 
 #include "PrimeFactors.h"
+#include "rtdsc.h"
 
 #include <boost/multiprecision/cpp_int.hpp>
 #include <future>
@@ -26,10 +27,10 @@ namespace brute {
   void PrimeFactors::find_one_factor(uint1024_t &start) {
 
     uint1024_t local = n;
-      
+
     for (uint1024_t i = start; i < sqrt_n; i = i + 10){
       // if p has a value, threads exit function
-  
+
 
       if ( p != NULL )
         return;
@@ -70,7 +71,7 @@ namespace brute {
 
     //for (int i = 0; i < 4; i++){
     //  thread_arr[i] = bind(&PrimeFactors::find_one_factor, this, ref(start_arr[i]));
-    //  thread 
+    //  thread
     //  thread_arr[i].join();
     //}
 
