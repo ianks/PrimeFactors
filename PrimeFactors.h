@@ -27,7 +27,7 @@ namespace brute {
 
     /* Functions */
     void brute_force();
-    void find_one_factor( uint1024_t &start );
+    inline void find_one_factor( uint1024_t &start );
     void pollard_strassen();
 
     /* Getters */

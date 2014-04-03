@@ -82,24 +82,36 @@ void brute_force_test()
 {
   cout << CYAN << "\n------- BRUTE FORCE-------\n" << endl;
 
-  /* Correct p and q  Factors */
-  uint1024_t p[TESTS] = {
-    51047, 60779, 60647,13500419, 55388987, 13500419, 926867, 14041283, 3296667839
-  };
-
-  uint1024_t q[TESTS] = {
-    51047, 1035107, 61797647, 57807203, 55388987, 944359583, 229355033267, 206392813919, 3342930707
-  };
-
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
     obj_array[i].brute_force();
     // check if p and q are correct
     // exclusive-or to make sure each var is only checked once
-    bool p_correct = (obj_array[i].p == p[i]);
-    bool q_correct = (obj_array[i].q == q[i]);
+    bool correct = (obj_array[i].p  * obj_array[i].q == obj_array[i].n );
 
-    if ( p_correct && q_correct )
+    if ( correct )
+      cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
+
+    else
+      cout << FAIL << "[  ] Test" << lexical_cast<string>(i+1) << " failed." << endl;
+
+    cout << "p: " << obj_array[i].p <<endl;
+    cout << "q: " << obj_array[i].q <<endl;
+  }
+}
+
+void pho_test()
+{
+  cout << CYAN << "\n------- POLLARD ALGORITHM-------\n" << endl;
+
+  for ( unsigned char i = 0; i < TESTS; i++ ){
+
+    obj_array[i].pollard_strassen();
+    // check if p and q are correct
+    // exclusive-or to make sure each var is only checked once
+    bool correct = (obj_array[i].p  * obj_array[i].q == obj_array[i].n );
+
+    if ( correct )
       cout << PASS << "[xx] Test" << lexical_cast<string>(i+1) << " passed." << endl;
 
     else

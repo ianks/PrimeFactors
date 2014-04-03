@@ -22,7 +22,7 @@ namespace brute {
     sqrt_n = sqrt(n);
   }
 
-  void PrimeFactors::find_one_factor(uint1024_t &start) {
+  inline void PrimeFactors::find_one_factor(uint1024_t &start) {
 
     long long cycStart, cycStop;
     cycStart = rdtscll();
@@ -81,11 +81,33 @@ namespace brute {
   }
 
   void PrimeFactors::pollard_strassen(){
+
+    if (n%2 == 0)
+      return;
+
     long long cycStart, cycStop;
     cycStart = rdtscll();
 
+    uint1024_t a = rand() % n + 1;
+    uint1024_t b = a;
+    uint1024_t c = rand() % n + 1;
+    p = 1;
+
+
+    while ( p == 1 ){
+      a = ((a*a) % n + c) % n;
+      b = ((b*b) % n + c) % n;
+      b = ((b*b) % n + c) % n;
+      uint1024_t abso = a-b;
+
+      p = gcd(abso, n);
+    }
+
+    q = (n / p);
+
     cycStop = rdtscll();
     float diff = cycStop - cycStart;
+    cout << "Cycles to Process: " << diff << endl;
     return;
   }
 }
