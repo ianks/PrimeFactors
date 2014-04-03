@@ -79,5 +79,9 @@ namespace brute {
 
     return;
   }
+
+  void PrimeFactors::pollard_strassen(){
+    return;
+  }
 }
 #endif

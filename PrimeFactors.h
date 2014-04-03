@@ -28,6 +28,7 @@ namespace brute {
     /* Functions */
     void brute_force();
     void find_one_factor( uint1024_t &start );
+    void pollard_strassen();
 
     /* Getters */
     uint1024_t  get_n()       const { return n;       }
