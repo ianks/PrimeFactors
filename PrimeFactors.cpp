@@ -81,6 +81,11 @@ namespace brute {
   }
 
   void PrimeFactors::pollard_strassen(){
+    long long cycStart, cycStop;
+    cycStart = rdtscll();
+
+    cycStop = rdtscll();
+    float diff = cycStop - cycStart;
     return;
   }
 }
