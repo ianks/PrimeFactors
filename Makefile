@@ -1,6 +1,7 @@
 CC = g++-4.8
-CXXFLAGS = -std=c++11 -fext-numeric-literals -Wall -Ofast
+CXXFLAGS = -std=c++11 -fext-numeric-literals -Wall -O4
 EXPENDABLES = PrimeFactors.o TestMain.o TestMain
+
 
 all:
 	@make $(EXPENDABLES)

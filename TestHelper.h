@@ -19,21 +19,21 @@ using namespace brute;
 #define TESTS   15
 
 /* Test Integers */
-int1024_t a = 2605796209;
-int1024_t b = 62912768353;
-int1024_t c = 3747841897609;
-int1024_t d = 780421461718057;
-int1024_t e = 3067939880886169;
-int1024_t f = 12749250057165277;
-int1024_t g = 212581611619084489;
-int1024_t h = 2898019909403018077;
-int1024_t i = 0x98F0CB99D6F5332D_cppui1024;                     //20
-int1024_t j = 0xB756E20EE44F043C9BD_cppui1024;                  //23
-int1024_t k = 0xA2A22393F60EB114438792D_cppui1024;              //28
-int1024_t l = 0x3010B252BC7C50407E2BAD8E9_cppui1024;            //30
-int1024_t m = 0xCAA9D2523028D2397E8FC8AE5_cppui1024;            //31
-int1024_t n = 0x263173580F112EBD35F9D8B73369_cppui1024;         //33
-int1024_t o = 0xC21BD30B38F1B636F2240E44E114D9_cppui1024;       //37
+int512_t a = 2605796209;
+int512_t b = 62912768353;
+int512_t c = 3747841897609;
+int512_t d = 780421461718057;
+int512_t e = 3067939880886169;
+int512_t f = 12749250057165277;
+int512_t g = 212581611619084489;
+int512_t h = 2898019909403018077;
+int512_t i = 0x98F0CB99D6F5332D_cppui512;                     //20
+int512_t j = 0xB756E20EE44F043C9BD_cppui512;                  //23
+int512_t k = 0xA2A22393F60EB114438792D_cppui512;              //28
+int512_t l = 0x3010B252BC7C50407E2BAD8E9_cppui512;            //30
+int512_t m = 0xCAA9D2523028D2397E8FC8AE5_cppui512;            //31
+int512_t n = 0x263173580F112EBD35F9D8B73369_cppui512;         //33
+int512_t o = 0xC21BD30B38F1B636F2240E44E114D9_cppui512;       //37
 
 /* Test Objects */
 PrimeFactors test01(a);
@@ -64,7 +64,7 @@ void constructor_test()
 {
   cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
 
-  int1024_t test_array[TESTS] = { a, b, c, d,
+  int512_t test_array[TESTS] = { a, b, c, d,
                                    e, f, g, h,
                                    i, j, k, l };
 
