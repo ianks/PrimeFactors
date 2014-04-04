@@ -14,5 +14,5 @@ This is a C++ multithreaded C++ class to crack small RSA-style private keys by f
 
 #### Notes
 
-1. Requires c++11 std lib and gcc-4.8 or newer
+1. Requires c++11 std-lib and gcc-4.8 or newer
 2. For large hex values, use the Ruby Script to generate the literal hex value

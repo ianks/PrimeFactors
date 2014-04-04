@@ -64,9 +64,10 @@ void constructor_test()
 {
   cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
 
-  int512_t test_array[TESTS] = { a, b, c, d,
+  int512_t test_array[TESTS] = {   a, b, c, d,
                                    e, f, g, h,
-                                   i, j, k, l };
+                                   i, j, k, l,
+                                   m, n, o };
 
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
