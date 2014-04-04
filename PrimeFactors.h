@@ -17,27 +17,27 @@ namespace brute {
   {
     public:
     /* Constructors, Destructors  */
-    PrimeFactors( uint1024_t num );
+    PrimeFactors( int1024_t num );
 
     /* Variables  */
-    uint1024_t n;
-    uint1024_t p;
-    uint1024_t q;
-    uint1024_t sqrt_n;
+    int1024_t n;
+    int1024_t p;
+    int1024_t q;
+    int1024_t sqrt_n;
 
     /* Functions */
     void brute_force();
-    inline void find_one_factor( uint1024_t &start );
+    inline void find_one_factor( int1024_t &start );
     void pollard_strassen();
 
     /* Getters */
-    uint1024_t  get_n()       const { return n;       }
-    uint1024_t  get_p()       const { return p;       }
-    uint1024_t  get_q()       const { return q;       }
-    uint1024_t  get_sqrt_n()  const { return sqrt_n ; }
-    uint1024_t* get_factors() const
+    int1024_t  get_n()       const { return n;       }
+    int1024_t  get_p()       const { return p;       }
+    int1024_t  get_q()       const { return q;       }
+    int1024_t  get_sqrt_n()  const { return sqrt_n ; }
+    int1024_t* get_factors() const
     {
-      uint1024_t factors[3] = { get_n(), get_p(), get_q() };
+      int1024_t factors[3] = { get_n(), get_p(), get_q() };
       return factors;
     }
   };

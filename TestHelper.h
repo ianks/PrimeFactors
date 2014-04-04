@@ -16,21 +16,24 @@ using namespace brute;
 #define PASS    "\033[0;32m"
 #define FAIL    "\033[0;31m"
 #define CYAN    "\033[0;36m"
-#define TESTS   12
+#define TESTS   15
 
 /* Test Integers */
-uint1024_t a = 2605796209;
-uint1024_t b = 62912768353;
-uint1024_t c = 3747841897609;
-uint1024_t d = 780421461718057;
-uint1024_t e = 3067939880886169;
-uint1024_t f = 12749250057165277;
-uint1024_t g = 212581611619084489;
-uint1024_t h = 2898019909403018077;
-uint1024_t i = 0x98F0CB99D6F5332D_cppui1024;                     //20
-uint1024_t j = 0xB756E20EE44F043C9BD_cppui1024;                  //23
-uint1024_t k = 0xA2A22393F60EB114438792D_cppui1024;              //28
-uint1024_t l = 0xC21BD30B38F1B636F2240E44E114D9_cppui1024;       //37
+int1024_t a = 2605796209;
+int1024_t b = 62912768353;
+int1024_t c = 3747841897609;
+int1024_t d = 780421461718057;
+int1024_t e = 3067939880886169;
+int1024_t f = 12749250057165277;
+int1024_t g = 212581611619084489;
+int1024_t h = 2898019909403018077;
+int1024_t i = 0x98F0CB99D6F5332D_cppui1024;                     //20
+int1024_t j = 0xB756E20EE44F043C9BD_cppui1024;                  //23
+int1024_t k = 0xA2A22393F60EB114438792D_cppui1024;              //28
+int1024_t l = 0x3010B252BC7C50407E2BAD8E9_cppui1024;            //30
+int1024_t m = 0xCAA9D2523028D2397E8FC8AE5_cppui1024;            //31
+int1024_t n = 0x263173580F112EBD35F9D8B73369_cppui1024;         //33
+int1024_t o = 0xC21BD30B38F1B636F2240E44E114D9_cppui1024;       //37
 
 /* Test Objects */
 PrimeFactors test01(a);
@@ -45,19 +48,23 @@ PrimeFactors test09(i);
 PrimeFactors test10(j);
 PrimeFactors test11(k);
 PrimeFactors test12(l);
+PrimeFactors test13(m);
+PrimeFactors test14(n);
+PrimeFactors test15(o);
 
 
 /* Array of Testing Objects */
 PrimeFactors obj_array[TESTS] = { test01, test02, test03,
                                   test04, test05, test06,
                                   test07, test08, test09,
-                                  test10, test11, test12 };
+                                  test10, test11, test12,
+                                  test13, test14, test15 };
 
 void constructor_test()
 {
   cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
 
-  uint1024_t test_array[TESTS] = { a, b, c, d,
+  int1024_t test_array[TESTS] = { a, b, c, d,
                                    e, f, g, h,
                                    i, j, k, l };
 

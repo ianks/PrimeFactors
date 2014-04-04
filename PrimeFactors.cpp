@@ -15,20 +15,20 @@ using namespace std;
 
 namespace brute {
 
-  PrimeFactors::PrimeFactors( uint1024_t num ){
+  PrimeFactors::PrimeFactors( int1024_t num ){
     n = num;
     p = 0;
     q = 0;
     sqrt_n = sqrt(n);
   }
 
-  inline void PrimeFactors::find_one_factor(uint1024_t &start) {
+  inline void PrimeFactors::find_one_factor(int1024_t &start) {
 
     long long cycStart, cycStop;
     cycStart = rdtscll();
-    uint1024_t local = n;
+    int1024_t local = n;
 
-    for (uint1024_t i = start; i < sqrt_n; i = i + 10){
+    for (int1024_t i = start; i < sqrt_n; i += 10){
       // if p has a value, threads exit function
 
 
@@ -67,7 +67,7 @@ namespace brute {
 
     // need to DRY out this function
 
-    uint1024_t start_arr[4];
+    int1024_t start_arr[4];
     start_arr[0] = 3;
     start_arr[1] = (sqrt_n / 4) | 0x1;
     start_arr[2] = (sqrt_n / 2) | 0x1;
@@ -88,9 +88,9 @@ namespace brute {
     long long cycStart, cycStop;
     cycStart = rdtscll();
 
-    uint1024_t a = rand() % n + 1;
-    uint1024_t b = a;
-    uint1024_t c = rand() % n + 1;
+    int1024_t a = rand() % n + 1;
+    int1024_t b = a;
+    int1024_t c = rand() % n + 1;
     p = 1;
 
 
@@ -98,9 +98,9 @@ namespace brute {
       a = ((a*a) % n + c) % n;
       b = ((b*b) % n + c) % n;
       b = ((b*b) % n + c) % n;
-      uint1024_t abso = a-b;
+      int1024_t diff = abs(a-b);
 
-      p = gcd(abso, n);
+      p = gcd(diff, n);
     }
 
     q = (n / p);
