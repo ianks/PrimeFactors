@@ -62,7 +62,7 @@ PrimeFactors obj_array[TESTS] = { test01, test02, test03,
 
 void constructor_test()
 {
-  cout << CYAN << "\n-------CONSTRUCTOR-------\n" << endl;
+  cout << CYAN << "\n-------CONSTRUCTOR-------\n" << PASS << endl;
 
   int512_t test_array[TESTS] = {   a, b, c, d,
                                    e, f, g, h,
@@ -88,7 +88,7 @@ void constructor_test()
 
 void brute_force_test()
 {
-  cout << CYAN << "\n------- BRUTE FORCE-------\n" << endl;
+  cout << CYAN << "\n------- BRUTE FORCE-------\n" << PASS << endl;
 
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
@@ -110,7 +110,7 @@ void brute_force_test()
 
 void pho_test()
 {
-  cout << CYAN << "\n------- POLLARD ALGORITHM-------\n" << endl;
+  cout << CYAN << "\n------- POLLARD ALGORITHM-------\n" << PASS << endl;
 
   for ( unsigned char i = 0; i < TESTS; i++ ){
 
