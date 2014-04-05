@@ -21,7 +21,7 @@ This is a C++ class to crack small RSA-style private keys by finding prime facto
 2. For large hex values, use the Ruby Script (hex_converter.rb) to generate the literal hex value
 
 
-### Running the Program
+#### Running the Program
 1. ```make```
 2. ```./TestMain --phollard``` ```./TestMain --brute-force```
 
