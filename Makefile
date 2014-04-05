@@ -1,5 +1,5 @@
 CC = g++-4.8
-CXXFLAGS = -std=c++11 -fext-numeric-literals -Wall -O4
+CXXFLAGS =  -m64 -std=c++11 -fext-numeric-literals -Wall -O4 -g
 EXPENDABLES = PrimeFactors.o TestMain.o TestMain
 
 
@@ -18,6 +18,9 @@ TestMain.o: PrimeFactors.h TestMain.cpp
 
 test: TestMain
 	./TestMain
+
+valgrind: TestMain
+	valgrind --tool=callgrind --simulate-cache=yes --collect-jumps=yes ./TestMain
 
 clean:
 	rm $(EXPENDABLES)
