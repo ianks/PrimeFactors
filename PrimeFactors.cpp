@@ -65,8 +65,8 @@ namespace brute {
 
   void PrimeFactors::brute_force(){
 
-    // need to DRY out this function
-
+    // attempted multi-threading here, managed to be
+    // slower than parallel function (prob doing it wrong)
     int512_t start_arr[4];
     start_arr[0] = 3;
     start_arr[1] = (sqrt_n / 4) | 0x1;

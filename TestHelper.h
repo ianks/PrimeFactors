@@ -112,7 +112,7 @@ void pho_test()
 {
   cout << CYAN << "\n------- POLLARD ALGORITHM-------\n" << endl;
 
-  for ( unsigned char i = 0; i < 10; i++ ){
+  for ( unsigned char i = 0; i < TESTS; i++ ){
 
     obj_array[i].pollard_strassen();
     // check if p and q are correct
